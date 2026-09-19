@@ -6,7 +6,7 @@
 EyesMachine machine;
 
 void setup() {
-  machine.setMode(EyesMachine::MachineMode::AUTO);
+  machine.setMode(EyesMachine::MachineMode::OFF);
   Serial.begin(DATA_COMMUNICATION_CHANNEL);
 
   // Configure Button Pin

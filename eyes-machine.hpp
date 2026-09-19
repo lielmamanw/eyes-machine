@@ -10,6 +10,7 @@ class EyesMachine
   public:
     enum class MachineMode
     {
+      OFF,
       AUTO,
       CONTROLLER
     };

@@ -10,14 +10,17 @@ EyesMachine::MachineMode EyesMachine::setMode(const MachineMode mode)
   _mode = mode;
   switch(_mode)
   {
-    case MachineMode::AUTO:
+    case MachineMode::OFF:
       rgbLedWrite(RGB_PIN, 255, 0, 0);
+      break;
+    case MachineMode::AUTO:
+      rgbLedWrite(RGB_PIN, 0, 255, 0);
       break;
     case MachineMode::CONTROLLER:
       rgbLedWrite(RGB_PIN, 0, 0, 255);
       break;
     default:
-      _mode = setMode(MachineMode::AUTO);
+      _mode = setMode(MachineMode::OFF);
       break;
   }
   return _mode;
