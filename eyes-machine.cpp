@@ -3,6 +3,19 @@
 EyesMachine::EyesMachine(const MachineMode mode) : _mode(mode), _actionsController()
 {}
 
+void EyesMachine::begin()
+{
+  _actionsController.begin();
+}
+
+void EyesMachine::runInLoop()
+{
+  _actionsController.setOpenness(0);
+  delay(1000);
+  _actionsController.setOpenness(1);
+  delay(1000);
+}
+
 EyesMachine::MachineMode EyesMachine::setMode(const MachineMode mode)
 {
   constexpr uint8_t RGB_PIN = 48;

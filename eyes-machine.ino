@@ -6,6 +6,7 @@
 EyesMachine machine;
 
 void setup() {
+  machine.begin();
   machine.setMode(EyesMachine::MachineMode::OFF);
   Serial.begin(DATA_COMMUNICATION_CHANNEL);
 
@@ -15,6 +16,7 @@ void setup() {
 
 void loop() {
   changeMachineModeButtonEvent();
+  machine.runInLoop();
 }
 
 void changeMachineModeButtonEvent()

@@ -19,6 +19,9 @@ class EyesMachine
 
     EyesMachine(const MachineMode mode = MachineMode::AUTO);
 
+    void begin();
+    void runInLoop();
+
     MachineMode setMode(const MachineMode mode);
     MachineMode setNextMode();
 
