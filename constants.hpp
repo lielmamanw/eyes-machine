@@ -53,3 +53,9 @@ constexpr MotorLimits RIGHT_UPPER_LID_LIMITS = { 240, 350, false };
 constexpr MotorLimits RIGHT_LOWER_LID_LIMITS = { 250, 350, true };
 constexpr MotorLimits LEFT_UPPER_LID_LIMITS = { 250, 350, true };
 constexpr MotorLimits LEFT_LOWER_LID_LIMITS = { 310, 430, false };
+
+// --- OffState timing (tired-blink enter animation + one-eye peek on exit) ---
+constexpr uint8_t OFF_STATE_TIRED_BLINK_COUNT = 3;
+constexpr unsigned long OFF_STATE_BLINK_BASE_HOLD_MS = 150UL;
+constexpr float OFF_STATE_BLINK_SLOWDOWN_FACTOR = 1.6f;
+constexpr unsigned long OFF_STATE_PEEK_DURATION_MS = 2000UL;
