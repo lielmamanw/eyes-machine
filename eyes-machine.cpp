@@ -1,11 +1,11 @@
 #include "eyes-machine.hpp"
 
-EyesMachine::EyesMachine(const MachineMode mode) : _mode(mode)
+EyesMachine::EyesMachine(const MachineMode mode) : _mode(mode), _actionsController()
 {}
 
 EyesMachine::MachineMode EyesMachine::setMode(const MachineMode mode)
 {
-  constexpr uint8_t RGB_PIN = 48; 
+  constexpr uint8_t RGB_PIN = 48;
   
   _mode = mode;
   switch(_mode)
@@ -28,6 +28,5 @@ EyesMachine::MachineMode EyesMachine::setNextMode()
   MachineMode currentMode = _mode;
   int currentModeAsNumber = static_cast<int>(currentMode);
   MachineMode nextMode = static_cast<MachineMode>(currentModeAsNumber + 1);
-  Serial.printf("Next mode: %d\n", nextMode);
   return setMode(nextMode);
 }

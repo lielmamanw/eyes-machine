@@ -1,5 +1,7 @@
 #pragma once
 
+#include "eyes-actions.controller.hpp"
+
 #include <cstdint>
 #include <Arduino.h>
 
@@ -19,4 +21,5 @@ class EyesMachine
 
   private:
     MachineMode _mode;
+    EyesActionsController _actionsController;
 };
