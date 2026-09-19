@@ -13,7 +13,8 @@ class EyesMachine
     {
       OFF,
       AUTO,
-      CONTROLLER
+      CONTROLLER,
+      UNREACHABLE_MODE
     };
 
     EyesMachine(const MachineMode mode = MachineMode::AUTO);
