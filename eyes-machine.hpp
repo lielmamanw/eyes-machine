@@ -1,5 +1,6 @@
 #pragma once
 
+#include "constants.hpp"
 #include "eyes-actions.controller.hpp"
 
 #include <cstdint>
