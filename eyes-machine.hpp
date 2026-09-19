@@ -1,5 +1,6 @@
 #pragma once
 
+#include "constants.hpp"
 #include "eyes-actions.controller.hpp"
 
 #include <cstdint>
@@ -12,7 +13,8 @@ class EyesMachine
     {
       OFF,
       AUTO,
-      CONTROLLER
+      CONTROLLER,
+      UNREACHABLE_MODE
     };
 
     EyesMachine(const MachineMode mode = MachineMode::AUTO);

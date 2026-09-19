@@ -7,22 +7,10 @@ EyesMachine::MachineMode EyesMachine::setMode(const MachineMode mode)
 {
   constexpr uint8_t RGB_PIN = 48;
   
-  _mode = mode;
-  switch(_mode)
-  {
-    case MachineMode::OFF:
-      rgbLedWrite(RGB_PIN, 255, 0, 0);
-      break;
-    case MachineMode::AUTO:
-      rgbLedWrite(RGB_PIN, 0, 255, 0);
-      break;
-    case MachineMode::CONTROLLER:
-      rgbLedWrite(RGB_PIN, 0, 0, 255);
-      break;
-    default:
-      _mode = setMode(MachineMode::OFF);
-      break;
-  }
+  _mode = (mode == MachineMode::UNREACHABLE_MODE) ? MachineMode::OFF : mode;
+  const RGBColor modeColor = EyesMachineModeColors[static_cast<uint8_t>(_mode)];
+  rgbLedWrite(RGB_PIN, modeColor.r, modeColor.g, modeColor.b);
+  
   return _mode;
 }
 
