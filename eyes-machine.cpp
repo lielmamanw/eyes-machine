@@ -13,6 +13,7 @@ EyesMachine::EyesMachine(const MachineMode mode)
 
 void EyesMachine::begin()
 {
+  randomSeed(esp_random());
   _actionsController.begin();
 }
 

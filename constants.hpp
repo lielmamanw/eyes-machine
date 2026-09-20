@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "motor.hpp"
+#include "random-timer.hpp"
 
 struct RGBColor
 {
@@ -59,3 +60,19 @@ constexpr uint8_t OFF_STATE_TIRED_BLINK_COUNT = 3;
 constexpr unsigned long OFF_STATE_BLINK_BASE_HOLD_MS = 150UL;
 constexpr float OFF_STATE_BLINK_SLOWDOWN_FACTOR = 1.6f;
 constexpr unsigned long OFF_STATE_PEEK_DURATION_MS = 2000UL;
+
+// --- AutoState behavior (each action has its own timing + magnitude distribution) ---
+
+// How long a blink stays closed before reopening.
+constexpr unsigned long BLINK_CLOSED_HOLD_MS = 120UL;
+
+constexpr RandomTimerConfig BLINK_TIMER_CONFIG = { 4000.0f, 1500.0f, 1500UL };
+constexpr RandomTimerConfig HORIZONTAL_SACCADE_TIMER_CONFIG = { 2500.0f, 900.0f, 600UL };
+constexpr RandomTimerConfig VERTICAL_SACCADE_TIMER_CONFIG = { 3000.0f, 1000.0f, 700UL };
+
+// Saccade target position distributions, in the same -1..1 space as setHorizontal/setVertical.
+constexpr float HORIZONTAL_SACCADE_TARGET_MEAN = 0.0f;
+constexpr float HORIZONTAL_SACCADE_TARGET_STDDEV = 0.5f;
+
+constexpr float VERTICAL_SACCADE_TARGET_MEAN = 0.0f;
+constexpr float VERTICAL_SACCADE_TARGET_STDDEV = 0.35f;
