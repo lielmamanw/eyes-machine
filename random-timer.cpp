@@ -14,9 +14,9 @@ bool RandomTimer::isDue(unsigned long now) const
   return now >= _dueAt;
 }
 
-void RandomTimer::reschedule(unsigned long now)
+void RandomTimer::reschedule(unsigned long now, float speedScale)
 {
-  const float sampledMs = sampleGaussian(_config.meanIntervalMs, _config.stddevIntervalMs);
+  const float sampledMs = sampleGaussian(_config.meanIntervalMs / speedScale, _config.stddevIntervalMs / speedScale);
   const unsigned long intervalMs = sampledMs > static_cast<float>(_config.minIntervalMs)
     ? static_cast<unsigned long>(sampledMs)
     : _config.minIntervalMs;
@@ -24,9 +24,9 @@ void RandomTimer::reschedule(unsigned long now)
   _dueAt = now + intervalMs;
 }
 
-bool RandomTimer::tryFire(unsigned long now)
+bool RandomTimer::tryFire(unsigned long now, float speedScale)
 {
   if (!isDue(now)) return false;
-  reschedule(now);
+  reschedule(now, speedScale);
   return true;
 }

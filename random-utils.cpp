@@ -3,12 +3,9 @@
 #include <Arduino.h>
 #include <math.h>
 
-namespace
+float sampleUniform01()
 {
-  float sampleUniform01()
-  {
-    return static_cast<float>(random(1, 1000001)) / 1000000.0f;
-  }
+  return static_cast<float>(random(1, 1000001)) / 1000000.0f;
 }
 
 float sampleGaussian(float mean, float stddev)

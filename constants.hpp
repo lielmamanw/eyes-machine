@@ -76,3 +76,23 @@ constexpr float HORIZONTAL_SACCADE_TARGET_STDDEV = 0.5f;
 
 constexpr float VERTICAL_SACCADE_TARGET_MEAN = 0.0f;
 constexpr float VERTICAL_SACCADE_TARGET_STDDEV = 0.35f;
+
+// --- AutoState gimmicks ---
+
+// Wink: occasionally blink only one eye instead of both.
+constexpr float WINK_PROBABILITY = 0.12f;
+
+// Blink synced with a saccade: occasionally blink at the same moment the gaze jumps.
+constexpr float SACCADE_SYNCED_BLINK_PROBABILITY = 0.25f;
+
+// Idle micro-jitter: tiny continuous nudges around the current gaze point between saccades.
+constexpr RandomTimerConfig JITTER_TIMER_CONFIG = { 200.0f, 60.0f, 80UL };
+constexpr float JITTER_STDDEV = 0.03f;
+
+// Energy: a slow random walk (0.5 = lazy, 1.0 = normal, 1.5 = excited) that speeds up
+// or slows down blink & saccade rate via RandomTimer's speedScale.
+constexpr RandomTimerConfig ENERGY_TIMER_CONFIG = { 8000.0f, 2000.0f, 4000UL };
+constexpr float ENERGY_STEP_STDDEV = 0.15f;
+constexpr float ENERGY_MIN = 0.5f;
+constexpr float ENERGY_MAX = 1.5f;
+constexpr float ENERGY_DEFAULT = 1.0f;

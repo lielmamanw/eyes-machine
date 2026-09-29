@@ -16,10 +16,12 @@ class RandomTimer
 
     void reset(unsigned long now);
     bool isDue(unsigned long now) const;
-    void reschedule(unsigned long now);
+
+    // speedScale > 1.0 shortens the next interval (fires more often), < 1.0 lengthens it.
+    void reschedule(unsigned long now, float speedScale = 1.0f);
 
     // isDue() + reschedule() combined, for behaviors that fire-and-forget in one step.
-    bool tryFire(unsigned long now);
+    bool tryFire(unsigned long now, float speedScale = 1.0f);
 
   private:
     RandomTimerConfig _config;
